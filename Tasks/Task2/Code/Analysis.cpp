@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 int main()
@@ -9,43 +10,39 @@ int main()
 
 	if (countDigits < 0)
 	{
-		cout << "Количество цифр не может быть отрицательным\n" << endl;
+		cout << "Количество чисел не может быть отрицательным\n" << endl;
 		return 0;
 	}
 
 	if (countDigits == 0)
 	{
-		cout << "Количество цифр не может быть нулевым\n" << endl;
+		cout << "Количество чисел не может быть нулевым\n" << endl;
 		return 0;
 	}
-	cout << "Введи " << countDigits << " цифр\n" << endl;
+	cout << "Введи " << countDigits << " чисел\n" << endl;
 	double sum, avg;
 	int minValue, maxValue;
 	sum = 0.0;
-	minValue = 10;
-	maxValue =  -1;
+	minValue = 0;
+	maxValue = 0;
 	for (int i = 0; i < countDigits; i++)
 	{
 		int digit;
 		cin >> digit;
-		if (digit < 0 || digit >= 10)
+		if (i == 0)
 		{
-			cout << "Цифра должна быть от [0 - 9]\n" << endl;
-			i--;
+			minValue = digit;
+			maxValue = digit;
 		}
-		else
-		{
-			sum += digit;
-			if (digit < minValue)
-				minValue = digit;
-			if (digit > maxValue)
-				maxValue = digit;
-		}
-
+		sum += digit;
+		if (digit < minValue)
+			minValue = digit;
+		if (digit > maxValue)
+			maxValue = digit;
 	}
 	avg = sum / countDigits;
 
-	cout << "Анализ завершён\nРезульат:\nСумма: " << sum << "\nСреднее: " << avg 
-												  << "\nМинимальное: " << minValue << "\nМаксимальное: " 
-												  << maxValue << endl;
+	cout << "Анализ завершён\nРезульат:\nСумма: " << sum << "\nСреднее: " << avg
+		<< "\nМинимальное: " << minValue << "\nМаксимальное: "
+		<< maxValue << endl;
 }
